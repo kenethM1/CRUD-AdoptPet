@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const DonationSchema = Schema({
+const donacionSchema = Schema({
   nombreDonante: String,
   motivoDonacion: String,
-  NombreMascota: String,
-  description: String,
-  edad: String,
-  raza: String,
-  tamanio: String,
-  peso: String
+  PetName: String,
+  Age: String,
+  Description: String,
+  Images: [{
+    image: String
+  }],
+  meta: {
+    DateCreated: String
+  }
 });
 
-const Donation = module.exports = mongoose.model('Donations', DonationSchema);
+const Donation = module.exports = mongoose.model('Donations', donacionSchema);
