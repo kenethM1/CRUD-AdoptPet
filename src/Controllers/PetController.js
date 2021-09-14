@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const Pet = require('../model/Pet');
+const validate = require('../utils/PetValidation');
 
 exports.GetPetByOrganization = async (req, res) => {
     const { Organization } = req.body;
@@ -17,22 +18,22 @@ exports.GetPetByOrganization = async (req, res) => {
 
 exports.getAllPets = async (req, res) => {
     try {
-      const pets = await Pet.find();
-      res.status('200').send(pets);
+        const pets = await Pet.find();
+        res.status('200').send(pets);
     } catch (error) {
-      res.json(error.title);
+        res.json(error.title);
     }
-  };
-  
+};
+
 exports.getPetsById = async (req, res) => {
     try {
-      const pet = await Pet.where({_id: req.params.id}).select().then(function(pet){
-        res.send(pet);
+        const pet = await Pet.where({ _id: req.params.id }).select().then(function (pet) {
+            res.send(pet);
         });
-      } catch (error) {
-       res.json(error.title);
-      }
-  };
+    } catch (error) {
+        res.json(error.title);
+    }
+};
 
 exports.ErasePet = async (req, res) => {
     await Verify.verifyToken(req, res, next);
