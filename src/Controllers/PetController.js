@@ -35,7 +35,7 @@ exports.getPetsById = async (req, res) => {
   };
 
 exports.ErasePet = async (req, res) => {
-    await Verify.verifyToken(req, res, next);
+    //await Verify.verifyToken(req, res, next);
     let { petName, organization } = req.params;
 
     const mascota = await Pet.findOneAndDelete({ PetName: petName, Organization: organization });

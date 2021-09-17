@@ -15,7 +15,7 @@ router.post('/addPet', Verify.verifyToken, checkRoleAuth(['admin']), PetControll
 
 router.get('/edit', Verify.verifyToken, checkRoleAuth(['admin']), PetController.EditPet);
 
-router.get('/delete/:id', Verify.verifyToken, checkRoleAuth(['admin']), PetController.EditPet);
+router.delete('/delete/:id', Verify.verifyToken, checkRoleAuth(['admin']), PetController.EditPet);
 
 router.get('/getPetById/:id' , Verify.verifyToken, checkRoleAuth(['admin']),PetController.getPetsById);
 
