@@ -5,6 +5,14 @@ const Schema = mongoose.Schema;
 const userSchema = Schema({
   idUsuario: String,
   nombreUsuario: String,
+  tipoUsuario:{
+    type: String,
+    default: 'cliente',
+    enum:[
+      'cliente',
+      'admin'
+    ]
+  },
   telefono: String,
   correo: String,
   direccion: String,
