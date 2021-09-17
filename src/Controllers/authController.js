@@ -5,12 +5,13 @@ const config = require("../config");
 exports.signupController = async (req, res) => {
     try {
         // Receiving Data
-        const { nombreUsuario, correo, password, telefono, direccion, nombres } = req.body;
+        const { nombreUsuario, tipoUsuario, correo, password, telefono, direccion, nombres } = req.body;
         // Creating a new User
         const idUsuario = new Date().getUTCMilliseconds();
         const user = new Usuario({
             idUsuario,
             nombreUsuario,
+            tipoUsuario,
             correo,
             password,
             telefono,

@@ -2,17 +2,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const AdoptionSchema = Schema({
-  userId: String,
+  Pet: {
+    PetName: String,
+    Age: String,
+    Description: String,
+    Images: [{
+      image: String
+    }]
+  },
   nombreSolicitante: String,
   telefono: String,
   correo: String,
-  nombreMascota: String,
-  edad: String,
-  raza: String,
   motivoAdopcion: String,
-  domicilio: String,
-  petId: String,
-  isAdopted: Boolean
+  Address: {
+    City: String,
+    Street: String,
+    Avenue: String
+  },
+
 });
 
 const Adoption = module.exports = mongoose.model('Adoptions', AdoptionSchema);

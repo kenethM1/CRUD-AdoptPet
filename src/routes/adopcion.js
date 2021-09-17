@@ -4,6 +4,7 @@ const Adoption = require('../model/Adoption');
 const Verify = require("../libs/verifyToken");
 const AdoptionController = require('../Controllers/AdoptionController');
 const { verify } = require('jsonwebtoken');
+const checkRoleAuth = require('../libs/tipoUser');
 
 router.get('/', async (req, res) => {
   res.redirect('/getAllFormularios');
@@ -11,12 +12,12 @@ router.get('/', async (req, res) => {
 
 router.post('/addFormulario', Verify.verifyToken, AdoptionController.AddFormularioAdopcion);
 
-router.get('/editFormulario', Verify.verifyToken, AdoptionController.EditFormulario);
+router.get('/editFormulario', Verify.verifyToken, checkRoleAuth(['admin']), AdoptionController.EditFormulario);
 
-router.get('/deleteFormulario/:id', Verify.verifyToken, AdoptionController.EditFormulario);
+router.get('/deleteFormulario/:id', Verify.verifyToken, checkRoleAuth(['admin']), AdoptionController.EditFormulario);
 
-router.get('/getAllFormularios', Verify.verifyToken, AdoptionController.getAllFormularios);
+router.get('/getAllFormularios', Verify.verifyToken, checkRoleAuth(['admin']), AdoptionController.getAllFormularios);
 
-router.put('/updateStatusFormulario', Verify.verifyToken, AdoptionController.UpdateStatusAdopcion);
+router.put('/updateStatusFormulario', Verify.verifyToken, checkRoleAuth(['admin']), AdoptionController.UpdateStatusAdopcion);
 
 module.exports = router;

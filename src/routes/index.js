@@ -5,22 +5,23 @@ const validate = require("../utils/PetValidation");
 const Verify = require("../libs/verifyToken");
 const PetController = require('../Controllers/PetController');
 const { verify } = require('jsonwebtoken');
+const checkRoleAuth = require('../libs/tipoUser');
 
 router.get('/', async (req, res) => {
   res.redirect('/getAllPets');
 });
 
-router.post('/addPet', Verify.verifyToken, PetController.AddPet);
+router.post('/addPet', Verify.verifyToken, checkRoleAuth(['admin']), PetController.AddPet);
 
-router.post('/edit', Verify.verifyToken, PetController.EditPet);
+router.get('/edit', Verify.verifyToken, checkRoleAuth(['admin']), PetController.EditPet);
 
-router.get('/delete/:id', Verify.verifyToken, PetController.EditPet);
+router.delete('/delete/:id', Verify.verifyToken, checkRoleAuth(['admin']), PetController.EditPet);
 
-router.get('/getPetById/:id', PetController.getPetsById);
+router.get('/getPetById/:id' , Verify.verifyToken, checkRoleAuth(['admin']),PetController.getPetsById);
 
-router.get('/getAllPets', PetController.getAllPets);
+router.get('/getAllPets', Verify.verifyToken, checkRoleAuth(['admin']), PetController.getAllPets);
 
-router.post('/GetPetsByOrganization', Verify.verifyToken, PetController.GetPetByOrganization);
+router.post('/GetPetsByOrganization', Verify.verifyToken, checkRoleAuth(['admin']), PetController.GetPetByOrganization);
 
 
 
