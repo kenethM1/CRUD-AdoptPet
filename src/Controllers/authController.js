@@ -28,7 +28,7 @@ exports.signupController = async (req, res) => {
             expiresIn: 60 * 60 * 24, // expires in 24 hours
         });
 
-        res.json({ auth: true, token });
+        res.json({ auth: true, token, user });
     } catch (e) {
         console.log(e);
         res.status(500).send("There was a problem registering your user");
@@ -58,7 +58,7 @@ exports.signinController = async (req, res) => {
     const token = jwt.sign({ id: user._id }, config.secret, {
         expiresIn: 60 * 60 * 24,
     });
-    res.status(200).json({ auth: true, token });
+    res.status(200).json({ auth: true, token, user });
 };
 
 exports.logout = async (req, res) => {
