@@ -22,6 +22,4 @@ exports.verifyToken = async (req, res, next) => {
         return res.status("404").json({ "Auth": "No functional token" });
     }
 
-
-
 }
