@@ -50,15 +50,17 @@ exports.ErasePet = async (req, res) => {
 }
 
 exports.EditPet = async (req, res) => {
-    var pet = await Pet.findByIdAndUpdate(req.body.id, req.body);
+    var pet = await Pet.findByIdAndUpdate(req.body._id, req.body, function (err, docs) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            console.log("Updated User : ", docs);
+        }
+    });
+
     if (!pet) {
         res.status('400').send({ "error": "Esa mascota no existe jeje" });
-    }
-    pet = req.body;
-    try {
-        await pet.save();
-    } catch (error) {
-        res.json({ "error": error })
     }
 
     res.status('200').json(pet);

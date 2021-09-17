@@ -12,11 +12,11 @@ router.get('/', async (req, res) => {
 
 router.post('/addPet', Verify.verifyToken, PetController.AddPet);
 
-router.get('/edit', Verify.verifyToken, PetController.EditPet);
+router.post('/edit', Verify.verifyToken, PetController.EditPet);
 
 router.get('/delete/:id', Verify.verifyToken, PetController.EditPet);
 
-router.get('/getPetById/:id' ,PetController.getPetsById);
+router.get('/getPetById/:id', PetController.getPetsById);
 
 router.get('/getAllPets', PetController.getAllPets);
 
