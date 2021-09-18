@@ -14,7 +14,7 @@ router.post('/addPet', Verify.verifyToken, PetController.AddPet);
 
 router.get('/edit', Verify.verifyToken, PetController.EditPet);
 
-router.delete('/delete/:id', Verify.verifyToken, PetController.EditPet);
+router.delete('/delete/:id', Verify.verifyToken, PetController.ErasePet);
 
 router.get('/getPetById/:id', Verify.verifyToken, PetController.getPetsById);
 
