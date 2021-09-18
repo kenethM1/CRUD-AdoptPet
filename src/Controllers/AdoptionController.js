@@ -58,5 +58,3 @@ exports.UpdateStatusAdopcion = async (req, res) => {
   res.json(req.body);
 }
 
-
-//

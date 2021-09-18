@@ -16,9 +16,9 @@ router.get('/edit', Verify.verifyToken, PetController.EditPet);
 
 router.delete('/delete/:id', Verify.verifyToken, PetController.EditPet);
 
-router.get('/getPetById/:id' , Verify.verifyToken, PetController.getPetsById);
+router.get('/getPetById/:id', Verify.verifyToken, PetController.getPetsById);
 
-router.get('/getAllPets', Verify.verifyToken, PetController.getAllPets);
+router.get('/getAllPets', PetController.getAllPets);
 
 router.post('/GetPetsByOrganization', Verify.verifyToken, PetController.GetPetByOrganization);
 
