@@ -18,6 +18,7 @@ const PetSchema = Schema({
   Images: [{
     image: String
   }],
+  isAdopted: Boolean,
   meta: {
     DateCreated: String
   }
